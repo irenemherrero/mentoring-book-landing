@@ -145,7 +145,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Image 1 -->
             <div class="overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition-all opacity-100">
-                <img src="/mock-up1.jpg" alt="Image 1" class="w-full h-full object-cover">
+                <img src="/mock-up1.png" alt="Image 1" class="w-full h-full object-cover">
             </div>
             <!-- Image 2 -->
             <div class="overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition-all opacity-100">
@@ -188,8 +188,8 @@
         <p class="text-lg text-gray-700 mb-6">
             Send me an email with your <b>feedback</b> or your <b>personal doubts or concerns</b> about your own mentoring journey to 
             <b class="transition-all opacity-100 hover:text-red-500 hover:transition-opacity duration-1000" >
-              <a href="mailto:irenemherrero@gmail.com?subject=Some thoughts on The Mentor's Guidebook" target="_blank">
-              irenemherrero@gmail.com
+              <a href="mailto:info@the-mentors-guidebook.com?subject=Some thoughts on The Mentor's Guidebook" target="_blank">
+              info@the-mentors-guidebook.com
 
               </a>
         </p>
@@ -202,7 +202,7 @@
         </p>
         <div class="text-center">
           <button style="background-color: #091A2F" class="text-white px-6 py-3 rounded-md text-lg font-semibold shadow-lg transition-all duration-200 transform hover:scale-105">
-            <a href="mailto:irenemherrero@gmail.com?subject=Some thoughts on The Mentor's Guidebook" target="_blank">
+            <a href="mailto:info@the-mentors-guidebook.com?subject=Some thoughts on The Mentor's Guidebook" target="_blank">
                 Email Me!
             </a>
           </button>
@@ -329,7 +329,7 @@
         As a thank you for sharing your feedback, I’ll send you the <b>Tip Sheets</b> you find in the book—this PDF comes with an improved design, ready to print and use in your mentoring process!
     </p>
     <button style="background-color: #091A2F" class="text-white px-6 py-3 rounded-md text-lg font-semibold shadow-lg transition-all duration-200 transform hover:scale-105">
-      <a href="mailto:irenemherrero@gmail.com?subject=Feedback on The Mentor's Guidebook" >
+      <a href="mailto:info@the-mentors-guidebook.com?subject=Feedback on The Mentor's Guidebook" >
           Email Me Your Feedback
       </a>
     </button>
@@ -342,8 +342,8 @@
 
 <!-- Footer -->
 <footer class="bg-blue-600 text-white text-center py-6" style="background-color: #0A1B2F">
-    <p>Find Irene on <a target="_blank" href="https://www.linkedin.com/in/irenemateoh-fullstack/" class="underline">LinkedIn</a></p>
-    <p class="mt-2">&copy; 2025 Irene Mateo Herrero. All rights reserved.</p>
+    <p>Find Irene M. Herrero on <a target="_blank" href="https://www.linkedin.com/in/irenemateoh-fullstack/" class="underline">LinkedIn</a></p>
+    <p class="mt-2">&copy; 2025 Irene M. Herrero. All rights reserved.</p>
 </footer>
 
 <style>
@@ -395,17 +395,17 @@
         body: JSON.stringify({ email }),
       });
       if (response.ok) {
-        responseMessage.innerText = "✅ Success! Check your inbox for your free chapter.";
-        responseMessage.style.color = "green";
+        responseMessage.innerText = "✅ Bonus sent! Check your inbox for your free chapter.";
+        responseMessage.style.color = "#091A2F";
       } else {
-        responseMessage.innerText = "❌ Error: " + (data.message || "Please try again.");
-        responseMessage.style.color = "red";
+        responseMessage.innerText = "❌ Unexpected rror: " + (data.message || "Please try again.");
+        responseMessage.style.color = "#E83425";
       }
     };
     fetchData();
     } catch (error) {
       responseMessage.innerText = "❌ Network error. Please try again.";
-      responseMessage.style.color = "red";
+      responseMessage.style.color = "#E83425d";
     }
   });
 </script>
