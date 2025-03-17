@@ -174,8 +174,9 @@
       <p class="mt-4 text-2xl">Step 1: Get your copy</p>
       <p class="mt-4 mb-8 ">Available in ebook and paperback.</p>
       <button class="transition-all duration-200 transform hover:scale-105">
-      <a href="https://www.amazon.com" target="_blank" class="bg-yellow-400 text-black px-6 py-3 rounded-md text-lg font-semibold mt">Buy on Amazon</a>
-      </button>
+<a id="amazon-link" href="#" target="_blank" class="bg-yellow-400 text-black px-6 py-3 rounded-md text-lg font-semibold mt">
+  Buy on Amazon
+</a>      </button>
     </div>
 
     <!-- Step 2 -->
@@ -408,4 +409,47 @@
       responseMessage.style.color = "#E83425d";
     }
   });
+</script>
+
+      <script>
+  async function setAmazonLink() {
+    try {
+      // Obtener país del usuario mediante la API gratuita de ip-api
+      let response = await fetch("https://ipapi.co/json/");
+      let data = await response.json();
+      let country = data.country_code; // Código de país (ej: "ES", "FR", "US")
+      console.log('country', country)
+      
+      // Enlaces de afiliados por país
+      let amazonLinks = {
+        // "US": "https://amzn.to/43RBbhf",
+        "CA": "https://amzn.to/3DQ96MP",
+        "ES": "https://amzn.to/3DKsTNI",
+        // "FR": "https://amzn.to/4kYb6TK",
+        // "IT": "https://amzn.to/4idj3D1",
+        //"GB": "https://amzn.to/4bxOFkf",
+        "NL": "https://amzn.to/4bEzDJA",
+        "DE": "https://amzn.to/4i4zzFf"
+      };
+
+      // Establecer el enlace adecuado en la etiqueta <a>
+      let amazonURL = amazonLinks[country] ||'https://mybook.to/Ntkm7';
+      let amazonLinkElement = document.getElementById("amazon-link"); // Reemplaza 'amazon-link' con el ID de tu <a>
+
+      if (amazonLinkElement) {
+        amazonLinkElement.href = amazonURL;
+      }
+    } catch (error) {
+      console.error("No se pudo detectar la ubicación:", error);
+      let fallbackLink = "https://www.amazon.com/dp/B0XYZ?tag=irenemateo-20"; // Fallback a Amazon.com
+      let amazonLinkElement = document.getElementById("amazon-link");
+
+      if (amazonLinkElement) {
+        amazonLinkElement.href = fallbackLink;
+      }
+    }
+  }
+
+  // Ejecutar la función cuando se cargue la página
+  window.onload = setAmazonLink;
 </script>
