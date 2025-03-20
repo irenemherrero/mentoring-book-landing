@@ -1,8 +1,40 @@
 ---
-import LandingContent from '../components/LandingContent.astro';
 import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import DescriptionSection from '../components/sections/DescriptionSection.astro';
+import GallerySection from '../components/sections/GallerySection.astro';
+import GetCopySection from '../components/sections/GetCopySection.astro';
+import ThingsToLearnSection from '../components/sections/ThingsToLearnSection.astro';
+import GetFreeChapterSection from '../components/sections/GetFreeChapterSection.astro';
+// import ReviewsSection from '../components/sections/ReviewsSection.astro';
+import MeetTheAuthorSection from '../components/sections/MeetTheAuthorSection.astro';
+
+import { COLORS } from '../lib/colors';
+import { LINKEDIN_URL } from '../lib/constants';
 ---
 
 <Layout>
-	<LandingContent />
+  <main>
+    <HeroSection />
+    <DescriptionSection />
+    <GallerySection />
+    <GetCopySection />
+    <ThingsToLearnSection />
+    <GetFreeChapterSection />
+    <!-- <ReviewsSection /> -->
+    <MeetTheAuthorSection />
+  </main>
+  <footer
+    class="bg-blue-600 text-white text-center py-6"
+    style=`background-color: ${COLORS.secondaryDark}`
+  >
+    <p>
+      Find Irene M. Herrero on <a
+        target="_blank"
+        href={LINKEDIN_URL}
+        class="underline">LinkedIn</a
+      >
+    </p>
+    <p class="mt-2">&copy; 2025 Irene M. Herrero. All rights reserved.</p>
+  </footer>
 </Layout>

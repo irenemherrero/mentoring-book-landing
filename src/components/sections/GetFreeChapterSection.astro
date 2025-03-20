@@ -1,0 +1,93 @@
+---
+import SectionLayout from './SectionLayout.astro';
+import UnderlineStroke from '../ui/UnderlineStroke.astro';
+
+import { COLORS } from '../../lib/colors';
+import { INFO_EMAIL } from '../../lib/constants';
+---
+
+<SectionLayout id="free-chapter" layout="text-center">
+  <div class="text-center mb-10">
+    <h2
+      class="text-3xl font-bold relative inline-block transform hover:scale-105 transition-all opacity-100"
+    >
+      Get your free chapter
+      <UnderlineStroke
+        svgHeight="10"
+        pathD="M 0 5 Q 75 0 150 5 T 300 5"
+        width="4"
+      />
+    </h2>
+  </div>
+  <p class="mt-4">Sign up to receive a free preview chapter.</p>
+  <form id="signup-form" class="mt-6">
+    <input
+      id="email"
+      type="email"
+      placeholder="Enter your email"
+      class="p-3 border border-gray-400 rounded-md w-64"
+      required
+    />
+    <button
+      type="submit"
+      class="ml-2 text-white px-6 py-3 rounded-md mt-4 transition-all duration-200 transform hover:scale-105"
+      style=`background-color: ${COLORS.secondaryDark}`
+      >Get My Free Chapter</button
+    >
+  </form>
+  <p
+    id="response-message"
+    class="mt-4 opacity-0 translate-y-4 transition-all duration-1000 ease-out"
+    data-info-email={INFO_EMAIL}
+  >
+  </p>
+</SectionLayout>
+
+<script>
+  const signUpForm = document.getElementById('signup-form');
+  const emailInput = document.getElementById('email');
+  const responseMessage = document.getElementById('response-message');
+  const INFO_EMAIL = responseMessage.dataset.infoEmail;
+
+  if (signUpForm && emailInput && responseMessage) {
+    signUpForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const email = emailInput.value;
+
+      try {
+        const response = await fetch('/api/proxy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        if (response.ok) {
+          responseMessage.innerHTML = `✅ Email sent!<br><br>Check your <b>inbox</b> for your <u>free chapter</u>.<br>Check <b>SPAM</b> if you don't find it. <br><br> If you still don't get it, send an email to <b><a target='_blank' href='mailto:${INFO_EMAIL}?subject=Free Chapter Request'>${INFO_EMAIL}</a><b>`;
+          responseMessage.style.color = '#091A2F';
+        } else {
+          responseMessage.innerText =
+            '❌ Unexpected error: ' +
+            (response.statusText || 'Please try again.');
+          responseMessage.style.color = '#E83425';
+        }
+
+        // Pequeño delay antes de quitar opacity-0 para asegurar la animación
+        setTimeout(() => {
+          responseMessage.classList.remove('opacity-0', 'translate-y-4');
+          responseMessage.classList.add('opacity-100', 'translate-y-0');
+        }, 10);
+      } catch (error) {
+        responseMessage.innerText = '❌ Network error. Please try again.';
+        responseMessage.style.color = '#E83425';
+
+        setTimeout(() => {
+          responseMessage.classList.remove('opacity-0', 'translate-y-4');
+          responseMessage.classList.add('opacity-100', 'translate-y-0');
+        }, 10);
+      }
+    });
+  }
+</script>

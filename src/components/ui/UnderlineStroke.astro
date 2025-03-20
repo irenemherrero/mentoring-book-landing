@@ -1,0 +1,20 @@
+---
+import { COLORS } from '../../lib/colors';
+
+const {
+  svgHeight = '10',
+  pathD = 'M 0 5 Q 75 0 150 5 T 300 5',
+  width = '3',
+} = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  height={svgHeight}
+  viewBox="0 0 300 10"
+  fill="none"
+  class="absolute bottom-[-5px] left-0 w-full"
+>
+  <path d={pathD} stroke={COLORS.primary} stroke-width={width} fill="none"
+  ></path>
+</svg>

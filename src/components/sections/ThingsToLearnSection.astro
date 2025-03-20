@@ -1,0 +1,49 @@
+---
+import SectionLayout from './SectionLayout.astro';
+
+const THINGS_TO_LEARN_LIST = [
+  'Build trust and create a safe space for your mentees.',
+  'Master the art of active listening to strengthen mentor-mentee relationships.',
+  'Conduct impactful first one-on-one meetings with confidence.',
+  'Set clear, actionable goals that align with career growth.',
+  'Provide constructive and honest feedback effectively.',
+  'Guide mentees through challenging situations with confidence.',
+  'Develop a structured approach to performance reviews.',
+  'Use mentor cheat sheets to streamline mentoring sessions.',
+  'Help mentees bounce back from setbacks and stay motivated.',
+  'Turn mentoring strategies into long-lasting impact.',
+];
+---
+
+<SectionLayout
+  bgColor="grey"
+  layout="text-center"
+  extraStyles="max-w-4xl mx-auto"
+>
+  <h2 class="text-2xl font-bold mb-4">10 Things This Book Will Teach You</h2>
+  <p class="text-lg text-gray-700 mb-6">Learn how to...</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left space-y-4">
+    {
+      [...Array(2)].map((_, colIndex) => (
+        <div key={colIndex} style={`margin-top: ${colIndex === 1 && '0'}`}>
+          {THINGS_TO_LEARN_LIST.slice(colIndex * 5, (colIndex + 1) * 5).map(
+            (text, index) => (
+              <p
+                key={index}
+                class={`flex items-center ${index !== 0 && 'mt-4'}`}
+              >
+                <span class="flex items-center justify-center w-8 h-8 bg-yellow-400 font-bold text-sm rounded-full shrink-0 mr-3">
+                  {colIndex * 5 + index + 1}
+                </span>
+                <span class="w-full">{text}</span>
+              </p>
+            ),
+          )}
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="mt-6 text-gray-600">...and much more.</p>
+</SectionLayout>

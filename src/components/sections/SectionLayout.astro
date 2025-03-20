@@ -1,0 +1,10 @@
+---
+const { bgColor = 'bg-white', id, layout, extraStyles } = Astro.props;
+---
+
+<section
+  id={id}
+  class={`${bgColor === 'grey' ? 'bg-gray-100' : bgColor} py-20 px-6 ${layout} ${extraStyles}`}
+>
+  <slot />
+</section>

@@ -1,0 +1,30 @@
+---
+import SectionLayout from './SectionLayout.astro';
+
+const bookImages = [
+  { src: '/mock-up2.jpg', alt: 'Hard cover book mockup' },
+  { src: '/mock-up1.png', alt: 'Paperback book mockup' },
+  { src: '/mock-up3.jpg', alt: 'Hard cover with person mockup' },
+];
+---
+
+<SectionLayout bgColor="grey">
+  <div class="max-w-7xl mx-auto text-center">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        bookImages.map((image) => (
+          <div
+            class="overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition-all opacity-100"
+            key={image.alt}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</SectionLayout>

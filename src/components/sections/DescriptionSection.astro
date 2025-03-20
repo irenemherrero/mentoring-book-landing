@@ -1,0 +1,105 @@
+---
+import SectionLayout from './SectionLayout.astro';
+import GetCopyButton from '../ui/GetCopyButton.astro';
+import DownloadFreeChapterButton from '../ui/DownloadFreeChapterButton.astro';
+import UnderlineStroke from '../ui/UnderlineStroke.astro';
+
+const listItems = [
+  {
+    text: 'Techniques for helping mentees set clear and impactful',
+    highlight: 'goals.',
+    strokeWidth: 8,
+  },
+  {
+    text: 'Practical guides for running',
+    highlight: 'one-on-ones',
+    strokeWidth: 6,
+  },
+  {
+    text: 'Strategies to handle',
+    highlight: 'difficult conversations',
+    strokeWidth: 4,
+  },
+];
+
+const paragraphClass = 'mt-6 text-lg text-gray-700 leading-relaxed';
+---
+
+<SectionLayout>
+  <div class="max-w-4xl mx-auto px-6">
+    <h2
+      class="text-center text-4xl font-barlow leading-tight mb-20 font-normal"
+    >
+      <span class="font-bold">The Mentor's Guidebook:</span>
+      <span class="relative inline-block text-3xl pt-4 italic">
+        Lead, Inspire, and Guide the
+        <span
+          class="relative inline-block transition-all opacity-100 hover:text-red-500 duration-1000"
+        >
+          <span class="font-bold">Tech Leaders of Tomorrow</span>
+          <UnderlineStroke
+            svgHeight="20"
+            pathD="M 0 5 Q 75 15 200 5 T 400 5"
+            width="3"
+          />
+        </span>
+      </span>
+    </h2>
+    <p class={paragraphClass}>
+      <b>The Mentor’s Guidebook</b> is the essential toolkit for anyone looking to
+      <b>guide, inspire, and empower others</b> whether in the tech industry or beyond.
+    </p>
+    <p class={paragraphClass}>
+      In this book you'll find a <b class="text-gray-900"
+        >relatable and practical roadmap</b
+      > for navigating the <b class="text-gray-900">challenges of mentorship</b
+      >.
+    </p>
+    <p class={paragraphClass}>
+      With <b class="text-gray-900">real-life anecdotes</b> and <b
+        class="text-gray-900">actionable advice</b
+      >, this book will help you overcome self-doubt, build meaningful
+      connections, and guide your mentees toward success.
+    </p>
+    <div class="p-6 mt-4">
+      <h3 class="text-2xl font-semibold text-gray-900">
+        Inside, you’ll discover:
+      </h3>
+      <ul class="mt-4 text-left text-lg text-gray-700 space-y-3">
+        {
+          listItems.map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 text-xl">✓</span>
+              <div>
+                {item.text}{' '}
+                <b class="text-gray-900">
+                  <span class="relative inline-block">
+                    <span class="text-gray-900">{item.highlight}</span>
+                    <UnderlineStroke
+                      svgHeight={item.strokeWidth}
+                      pathD="M 0 5 Q 75 0 150 5 T 300 5"
+                      width={item.strokeWidth}
+                    />
+                  </span>
+                </b>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <p class={paragraphClass}>
+      Whether you’re stepping into mentorship for the first time or looking to
+      refine your skills, <b class="text-gray-900">The Mentor’s Guidebook</b> will
+      give you the strategies you need to become <b class="text-gray-900"
+        >the best mentor you can be</b
+      >.
+    </p>
+    <div
+      class="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center"
+    >
+      <GetCopyButton />
+      <DownloadFreeChapterButton text="Get Free Chapter Now" />
+    </div>
+  </div>
+</SectionLayout>
